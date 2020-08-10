@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<!-- lang é um atributo que vai definir a linguagem do HTML -->
+<!--
+            Toda tag tem que abrir e fechar em HTML.
+            Dentro da tag eu coloco informações!
+            Comentários são para explicar o que vamos fazer na aula
+            O que é HTML:
+            HyperText
+                  Hipertexto
+            Markup
+                  Marcação
+            Language
+                  Linguagem
+      -->
+<!-- Na tag <head> irá ficar as Configurações do meu documento -->
+<head>
+      <!-- Vai configurar os estilos da página que consiga adaptar
+             a tela para maiores e menores. -->
+      <meta charset="UTF-8"> <!-- Configuração do documento -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="theme-color" content="#8257E5">
+
+      <!-- Title muda o título da página. -->
+      <title>Proffy | Sua plataforma de Estudos online</title>
+      
+      <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+
+      <link rel="stylesheet" href="/styles/main.css">
+      <link rel="stylesheet" href="/styles/partials/page-landing.css">
+
+      <!-- Criando class - é um acesso a class que criou é dessa maneira:
+      Dentro de <style> você cria uma classe -> .red { color: red;}
+            Em <body>,aonde quiser acessar a class criada, você acessa assim:
+                  <h1 class="red">NomeExemplo</h1>
+
+      Criando id - é um acesso id um identificador único, se faz dessa maneira:
+      Dentro de <style> você cria um id -> #page-landing { color: red;}
+            Em <body>, aonde quiser acessar a id criada, você acessa assim:
+                  <h1 id="page-landing">NomeExemplo</h1> -->
+
+      <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap"
+            rel="stylesheet">
+
+</head>
+
+<body id="page-landing">
+      <!-- Na tag <body> ficará todo o conteúdo visivel na página, deverá vir na tah body -->
+      <div id="container">
+            <div class="logo-container">
+                  <!-- src="" Source é a fonte, a origem, a raiz da origem da 
+      imagem.
+      alt= "" é uma alternativa ao source que não existe, em texto! -->
+                  <img src="/images/logo.svg" alt="Proffy">
+                  <h2>Sua plataforma de estudos online</h2>
+            </div>
+
+            <img class="hero-image" src="/images/landing.svg" alt="plataforma de Estudos">
+
+            <!-- o <a></a> é um hyperlink, aonde irá direcionar o local ou link que desejar 
+            Criamos os botões do nosso site. -->
+            <div class="buttons-container">
+                  <a class="study" href="/study">
+                        <img src="/images//icons//study.svg" alt="Estudar">
+                        Estudar
+                  </a>
+                  <a class="give-classes" href="/give-classes">
+                        <img src="/images//icons//give-classes.svg" alt="Dar aulas">
+                        Dar aulas
+                  </a>
+            </div>
+
+            <p class="total-connections">
+                  Total de 285 conexões já realizadas
+                  <img src="/images/icons/purple-heart.svg" alt="Coração roxo">
+            </p>
+      </div>
+
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+ /* CSS significa - Cascading StyleSheets */
+ /* Pasta partials: é a pasta com outros pedaços de CSS */
+ /* Tanto para JavaScript, CSS# e HTML5
+Todos os elementos dentro de <body> ele recebe nomeclatura de Pai e Filho
+Você consegue acessar e mudar somente o filho quando declarar em <style> 
+como desejar fazer */
+/*  Toda vez que vou trabalhar com arquivo dentro do HTML, é necessário colocar
+"/" antes do nome do arquivo, para que não gere erro!!
+*/
+:root { /* variáveis CSS */
+      --color-background: #F0F0F7;
+      --color-primary-lighter: #9871F5;
+      --color-primary-light: #916BEA;
+      --color-primary: #8257E5;
+      --color-primary-dark: #774DD6;
+      --color-primary-darker: #6842c2;
+      --color-secondary: #04D361;
+      --color-secondary-dark: #04BF58;
+      --color-title-in-primary: #FFFFFF;
+      --color-text-in-primary: #D4C2FF;
+      --color-text-title: #32264D;
+      --color-text-complement: #9C98A6;
+      --color-text-base: #6A6180;
+      --color-line-in-white: #E6E6F0;
+      --color-input-background: #F8F8FC;
+      --color-button-text: #FFFFFF;
+      --color-box-base: #FFFFFF;
+      --color-box-footer: #FAFAFC;
+      --color-small-info: #C1BCCC;
+
+      /* Tamanho da fonte padrão: 16px - 100% - 1rem - 1em
+      A unidade de medida 1rem - está relacionada ao :root então dependendo
+      do que for feito, não herdará do pai e sim pegará do :root, aonde foi
+      definido uma medida de font-size: ;
+      Já o 1em, será herdado do pai e assim será como uma cascata */
+
+      font-size: 60%; /* controle das medidas rem */
+      /* será aplicado uma responsividade mobile nesse curso */
+  }
+
+  /* o :root{} está se referindo a pasta raiz do HTML inteira.
+  A partir do momento que coloca os dois traços '--' está criando uma variável,
+  isso é feito por gerar uma facilidade de alterar a cor do projeto. Aonde
+  memoriza o nome de uma cor */
+
+* {
+      /* O asteristico '*' significa muitos elementos */
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+}
+
+html,
+body {
+      height: 100vh; 
+      /* height significa altura. 
+      Como uma boa prática, é colocar o height juntamente com o html e body,
+      pois o conteúdo terá toda a visão do documento.
+      O "vh" significa view height, é a visão do documento. */
+}
+
+body {
+      background: var(--color-background);
+      display: flex;
+      /* Display flex quer dizer que todos os elementos da caixa body tem que
+      ser flexiveis, ele muda o comportamento que tudo que for block, e deixa 
+      em in-line, ficando ao lado um do outro. */
+      align-items: center;
+      /* Ele alinha todos os elementos conforme indentado */
+      justify-content: center;
+      /* Aqui ele justifica o conteúdo alinhado ao meio */
+}
+
+body,
+input,
+button,
+textarea {
+      /* font-weight: 500;
+      font-size: 1.6rem;
+      font-family: Poppins; */
+      font: 500 1.6rem Poppins;
+      color: var(--color-text-base);
+}
+/* font: seria o agrupamento dos itens abaixo, seguidos conforme explicado.
+Porém existe as propriedades isoladas, que nem sempre iremos trabalhar com as 3
+juntas, então podendo fazer somente a que deseja ou tem que mexer, aí teria que
+seguir a linha de raciocínio abaixo.
+
+   500 é o peso, no caso o bold: font-weight: 500;
+   1.6rem seria o tamanho da fonte: font-size:1.6rem;
+   Poppins seria o font-family, no caso, a forma do texto: font-family:Poppins; 
+*/
+
+#container { /* width significa largura */
+      width: 90vw;  /* width: 90vm; */
+      max-width: 700px;
+}
+
+/* Todo 1rem vai ser relativo a 10px.
+O que esta sendo feito aqui, quando a tela for maior que 700px e menor que 1100px, será equivalente a 
+10px a mais, por exemplo, se for 0.8rem ele será 8px, 2.4rem será 24px, mas só após os 700px declarado abaixo.
+*/
+@media (min-width: 700px) {
+      :root {
+            font-size: 62.5%; 
+      }
+}

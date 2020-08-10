@@ -1,0 +1,64 @@
+.select-block label,
+.input-block label,
+.textarea-block label {
+      font-size: 1.4rem;
+      color: var(--color-text-complement);
+}
+
+/* outline: 0; está tirando a seleção que fica bem forte quando está selecionando algum ícone. 
+A partir do momento que tiramos o outline, não é uma prática muito adequada para as pessoas que precisam de acessibilidade; */
+.input-block input,
+.select-block select,
+.textarea-block textarea {
+      width: 100%;
+      height: 5.6rem;
+      margin-top: 0.8rem;
+      border-radius: 0.8rem;
+      background: var(--color-input-background);
+      border: 1px solid var(--color-line-in-white);
+      outline: 0;
+      padding: 0 1.6rem;
+      font: 1.6rem Archivo;
+}
+/* resize: vertical; essa é uma opção de mexer na caixa de texto somente na vertical. */
+.textarea-block textarea {
+      padding: 1.2rem 1.6rem;
+      height: 16rem;
+
+      resize: vertical;
+}
+
+/* focus-within::after; quando eu estiver dentro de um input-block, dentro de um elemento em foco,
+eu quero que procure a div input-block, :after o CSS vai criar um elemento html somente quando o elemento estiver 
+em foco.
+O que quer dizer, está colocando um elemento de uma maneira dinamica com o CSS, isso é um avanço grande.
+
+Com CSS consegue fazer calculos matemáticos usando a propriedade calc.
+width: calc(100% - 3.2rem); Aqui está fazendo o calculo da para o width, sempre pegando 100% e subtraindo 3.2rem 
+
+position: absolute; funciona da seguinte forma, como se fosse uma folha de papel nova, em cima de uma folha de papel antiga!
+Isso vai funcionar na página inteira. E para que fique na posição correta, precisa ter uma posição relativa.
+*/
+.input-block,
+.textarea-block {
+      position: relative;
+}
+
+.input-block:focus-within::after,
+.textarea-block:focus-within::after {
+      content: "";
+
+      width: calc(100% - 3.2rem);
+      height: 2px;
+      background: var(--color-primary-light);
+
+      position: absolute;
+      left: 1.6rem;
+      bottom: 0;
+}
+
+label small {
+      font-size: 1.2rem;
+      padding-left: 1.2rem;
+      color: var(--color-small-info);
+}

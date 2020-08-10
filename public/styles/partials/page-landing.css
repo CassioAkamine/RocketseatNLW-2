@@ -1,0 +1,207 @@
+/* page-landing: é a página inicial quando se entra no site.
+Vamos treinar bastante de como navegar entre arquivos e também fica
+mais organizado o nosso conteúdo. */
+
+/* Cor do fundo conforme padronizado e a variável está na main */
+#page-landing {
+      background: var(--color-primary);
+      padding: 5%;
+}
+
+/* Dentro do page-landing tenho o container, e será definido a cor da fonte */
+#page-landing #container {
+      color: var(--color-text-in-primary);
+}
+
+/* Ajuste da imagem do logo */
+.logo-container img {
+      height: 10rem;
+}
+
+/* Todos os textos dentro de .logo-container ficará alinhado ao meio ou centro,
+inclusive imagens */
+.logo-container {
+      text-align: center;
+      margin-bottom: 3.2rem;
+}
+
+/* Ajustes no h2, deixando o font-weight mais leve.
+line-height é a altura da linha do texto, diferente da altura da caixa. */
+.logo-container h2 {
+      font-weight: 500;
+      font-size: 3.6rem;
+      line-height: 4.6rem;
+      margin-top: 0.8rem;
+}
+
+/* Ajuste da imagem do .hero-image.
+o width da imagem .hero-image será de 100% do que foi determinado no #container,
+por isso usa a porcentagem '%', pois herda do pai, que é o container. */
+.hero-image {
+      width: 100%;
+}
+
+/* Aqui será alinhado o botão no centro da tela.
+o display: flex; é para colocar os botões um ao lado do outro e o justufy-content,
+só irá funcionar se tiver o display: */
+.buttons-container {
+      display: flex;
+      justify-content: center;
+      margin: 3.2rem 0;
+}
+
+/* border-radius: arrendonda as bordas da caixa do botão.
+border-top-left-radius: 1rem; arredonda somente o canto superior esquerdo.
+border-top-right-radius: 1rem; arredonda somente o canto superior direito.
+border-bottom-left-radius: 1rem; arredonda somente o canto inferior esquerdo.
+border-bottom-right-radius: 1rem; arredonda somente o canto inferior direito.
+text-decoration: none; retira o underline do link que é padrão pelo <a></a>.
+align-items: center; alinha os itens no centro.
+transition: background 0.2s; é uma propriedade de transição, aonde gera uma animação.
+*/
+.buttons-container a {
+      width: 30rem;
+      height: 10.4rem;
+
+      border-radius: 0.8rem;
+      margin-right: 1.6rem;
+
+      font: 700 2.4rem Archivo;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-decoration: none;
+
+      transition: background 0.2s;
+
+      color: var(--color-button-text);
+}
+
+/* Ajutando a largura da imagem dentro do botão */
+.buttons-container a img {
+      width: 4rem;
+      margin-right: 2.4rem;
+}
+
+/* colocando cor no botão estudar */
+.buttons-container a.study {
+      background: var(--color-primary-lighter);
+}
+
+/* :hover - quer dizer pelo css que as propriedades dentro do botão, só serão
+funcionais quando o mouse estiver em cima do botão */
+.buttons-container a.study:hover {
+      background: var(--color-primary-light);
+}
+
+/* colocando cor no botão dar aulas
+margin-right: 0; estamos retirando a margem aplicada no .buttons-container a,
+pois, não temos outro botão depois do "botão Dar aulas" */
+.buttons-container a.give-classes {
+      background: var(--color-secondary);
+      margin-right: 0;
+}
+
+.buttons-container a.give-classes:hover {
+      background: var(--color-secondary-dark);
+}
+
+/* Ajustando a mensagem de conexões na página home. */
+.total-connections {
+      font-size: 1.2rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+}
+
+/* Colocando margem esquerda da imagem do coração roxo. */
+.total-connections img {
+      margin-left: 0.8rem;
+}
+
+/* No caso aqui será somente na página inicial */
+@media (max-width: 1699px) {
+      :root {
+            font-size: 40%; /* modificar as medidas em rem */
+      }
+}
+
+/* @media é uma regra de CSS que será aplicada quando cumprir um
+padrão.
+Tudo o que colocar dentro de @media ele vai aplicar tudo o que estiver
+dentro das chaves {}, tudo o que estiver dentro 1100px para cima.
+Quando ele ver que a tela tem 1100px, ele vai mudar para o valor definido.
+display: grid; divide a pagina em colunas.
+
+grid-template-columns: 1fr 1fr 1fr; Aqui você diz quantas colunas deseja ter,
+e o 1fr significa que é a fração com 3 partes iguais.
+
+E também consegue fazer com pixels: 500px 300px 200px;
+
+grid-template-rows: 350px 1fr; ele faz as linhas, uma linha é fixa,
+350px e a outra de 1fr, no caso, uma fração é flexível.
+
+grid-template-areas: ; é aonde será criado as definições da grid,
+"proffy image image" é a primeira linha, aonde ficará a imagem proffy e as outras
+duas colunas ficará a image hero.
+"button button texting" aqui é a segunda linha e aqui ficará os botões na primeira e segunda
+coluna, e o texto de conexões ficará na terceira coluna
+
+gap: 60px; o gap ele muda todo o grid, dando um espaçamento entre na grid.
+*/
+@media(min-width: 1100px) {
+      #page-landing #container {
+            max-width: 1100px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 2fr;
+            grid-template-rows: 350px 1fr;
+            grid-template-areas:
+            "proffy image image"
+            "button button texting";
+            column-gap: 87px;
+            row-gap: 86px;
+      }
+
+      /* Aqui estamos declarando os nomes das areas definidas grid-template-areas:; e configurando elas.
+      text-align: initial; Aqui estamos colocando a imagem do logo no lado esquerdo ou no inicio da grid.
+      align-self: center; Aqui estamos centralizando a imagem dentro da grid, ele pega o conteúdo dentro dele
+      mesmo para que ela não saia do que foi específicado, que é dentro da grid de 2fr (de duas frações do tamanho - no caso ela é flexível)
+       */
+      .logo-container {
+            grid-area: proffy;
+            text-align: initial;
+            align-self: center;
+            margin: 0;
+      }
+
+      /* Aqui estamos definindo o tamanho de 100% da img do logo. */
+      .logo-container img {
+            height: 127px;
+      }
+
+      .hero-image {
+            grid-area: image;
+            height: 350px;
+      }
+
+      /* justify-content: flex-start; está sobre escrevendo o justify-content: center; do botão definido acima,
+      Pois aqui estamos em tela maior e queremos colocar ele ao lado. Estamos nos referindo ao conteúdo do grid.
+      E aqui usamos o justify-content: flex-start; pois irá sobrescrever o código do botão. E tem haver com o 
+      Botão criado com flex lá em cima.
+       */
+      .buttons-container {
+            grid-area: button;
+            justify-content: flex-start;
+            margin: 0;
+      }
+
+      /* justify-self: end; estamos colocando a conexão para o lado direito da página, no caso no final dela. 
+      Aqui o justify-self: end; tem haver com o grid criado agora. */
+      .total-connections {
+            grid-area: texting;
+            justify-self: end;
+      }
+}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <title>Proffy | Sua plataforma de Estudos online</title>
+
+      <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+
+      <link rel="stylesheet" href="/styles/main.css">
+      <link rel="stylesheet" href="/styles/partials/header.css">
+      <link rel="stylesheet" href="/styles/partials/forms.css">
+      <link rel="stylesheet" href="/styles/partials/page-give-classes.css">
+
+      <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap"
+            rel="stylesheet">
+
+      <!-- Para acessar um arquivo javaScript, abre uma tag <script> e coloca o seu caminho src="/scripts/addField.js" 
+            porém, se eu colocar o script no <head>, terei um erro, aonde o script não será lido, pois, ele vai ler primeiro 
+            o comando do script, para depois executar os comando em HTML, e para resolver o problema, basta colocar o 
+            defer, que faz com que execute tudo o que está no programa, para depois acessar o javaScript. Fazendo o carregamento 
+            do javaScript depois que fazer a rendarização da página. -->
+      <script src="/scripts/addField.js" defer></script>
+</head>
+
+<body id="page-give-classes">
+
+      <div id="container">
+            <header class="page-header">
+                  <div class="top-bar-container">
+                        <a href="/">
+                              <img src="/images/icons/back.svg" alt="Voltar">
+                        </a>
+                        <img src="/images/logo.svg" alt="Proffy">
+                  </div>
+
+                  <div class="header-content">
+                        <strong>Que incrível que você quer dar aulas</strong>
+                        <p>O primeiro passo, é preencher esse formulário de inscrição</p>
+
+                  </div>
+            </header>
+            <!-- <fieldset> = para fazer um agrupamento de dados dentro do formulário, e toda <fieldset> precisa ter dentro uma <legend>
+      <legend> =  vai ser o nome do agrupamento de dados.
+      <input name="name" id="name" required> = required, esse campo é obrigatório, o formulário não vai para o local aonde queremos enviar ele, se este campo não estiver preenchido. 
+      <small> = é uma tag que quer dizer que tem um texto pequeno.buttons-container
+      type="url" = ele exige que coloque o hyperLink.
+      <textarea></textarea> = você consegue colocar multi linhas dentro dele, mas não pode dar quebra de linha, pois o curso fica desorientado.
+
+      -->
+            <main>
+                  <form action="/save-classes" id="create-class" method="POST">
+                        <fieldset>
+                              <legend>Seus dados</legend>
+
+                              <div class="input-block">
+                                    <label for="name">Nome completo</label>
+                                    <input name="name" id="name" required>
+                              </div>
+                              <div class="input-block">
+                                    <label for="avatar">Link da sua foto <small>(comece com https://)</small></label>
+                                    <input name="avatar" id="avatar" type="url" required>
+                              </div>
+                              <div class="input-block">
+                                    <label for="whatsapp">Whatsapp <small>(DDD + seu número)</small></label>
+                                    <input type="number" name="whatsapp" id="whatsapp" required>
+                              </div>
+                              <div class="textarea-block">
+                                    <label for="bio">Biografia</label>
+                                    <textarea name="bio" id="bio" required></textarea>
+                              </div>
+                        </fieldset>
+
+                        <fieldset>
+                              <legend>Sobre a aula</legend>
+                              <div class="select-block">
+                                    <label for="subject">Matéria</label>
+                                    <select name="subject" id="subject" required>
+
+                                          <!-- Estrutura de repetição Loop - roda quantas vezes for necessária e toda vez que entrar vai chamar um subject -->
+                                          {%for subject in subjects %}
+                                          <option value="{{loop.index}}">
+                                                {{subject}}
+                                          </option>
+                                          {%endfor%}
+
+                                    </select>
+                              </div>
+
+                              <div class="input-block">
+                                    <label for="cost">Custo da sua hora/aula
+                                          <small>(R$)</small>
+                                    </label>
+                                    <input name="cost" id="cost" type="number" required>
+                              </div>
+                        </fieldset>
+
+                        <!-- id="schedule-items"; é um id que será utilizado no javaScript também. -->
+                        <fieldset id="schedule-items">
+                              <legend>Horários disponíveis
+                                    <button type="button" id="add-time">+ Novo Horário</button>
+                              </legend>
+                              <!-- 
+  <select name="weekday[]" id="weekday"></select> = os colchetes "[]" é uma técnica que vai ser usado no back-end
+e que significa que pode vir com mais de um valor, e vai agrupar os valores com essa técnica.
+ -->
+                              <div class="schedule-item">
+
+                                    <div class="select-block">
+                                          <label for="weekday">Dia da semana</label>
+                                          <select name="weekday[]" id="weekday" required>
+
+                                                {%for weekday in weekdays %}
+                                                <option value="{{loop.index0}}">
+                                                      {{weekday}}
+                                                </option>
+                                                {%endfor%}
+
+                                          </select>
+                                    </div>
+
+                                    <div class="input-block">
+                                          <label for="time_from">Das</label>
+                                          <input type="time" name="time_from[]" required>
+                                    </div>
+
+                                    <div class="input-block">
+                                          <label for="time_to">Até</label>
+                                          <input type="time" name="time_to[]" required>
+                                    </div>
+                              </div>
+                              <!-- somente para verificação da formatação do .schedule-item para o javaScript,
+                                    foi copiado inteiro a -> <div class="schedule-item">
+                              Fim do teste e pode apagar! -->
+                        </fieldset>
+                  </form>
+                  <!-- Todo button que tem o tipo submit ele tem que estar dentro do formulário, mas se ele estiver fora do formulário,
+                  tem a opção de indicar o button para dentro do form, que é criando uma id em form (<form action="" id="create-class">),
+                  e colocar no button criado fora do form dessa maneira (<button type="submit" form="create-class">Salvar cadastro</button>),
+                  assim irá enviar o formulário! -->
+                  <footer>
+                        <p>
+                              <img src="/images/icons/warning.svg" alt="Aviso importante">
+                              Importante! <br> Preencha todos os dados
+                        </p>
+                        <button type="submit" form="create-class">Salvar cadastro</button>
+                  </footer>
+            </main>
+      </div>
+
+</body>
+
+</html>
