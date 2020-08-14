@@ -43,7 +43,7 @@ function cloneField() {
       funcão -> (function(field) {}) , e o -> (field) é o field do momento, e depois abro e fecho chaves para executar o 
       que tem dentro.
       */
-      fields.forEach(function(field) {
+      fields.forEach(function (field) {
             //pega o field do momento e limpa ele
             field.value = ""
       })
@@ -53,4 +53,3 @@ function cloneField() {
      */
       document.querySelector('#schedule-items').appendChild(newFieldContainer)
 }
-

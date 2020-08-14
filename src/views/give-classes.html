@@ -23,6 +23,7 @@
             defer, que faz com que execute tudo o que está no programa, para depois acessar o javaScript. Fazendo o carregamento 
             do javaScript depois que fazer a rendarização da página. -->
       <script src="/scripts/addField.js" defer></script>
+      <script src="/public/scripts/removeField.js" defer></script>
 </head>
 
 <body id="page-give-classes">
@@ -101,6 +102,7 @@
                         <fieldset id="schedule-items">
                               <legend>Horários disponíveis
                                     <button type="button" id="add-time">+ Novo Horário</button>
+                                    <button type="button" id="rmv-time">Remover horário</button>
                               </legend>
                               <!-- 
   <select name="weekday[]" id="weekday"></select> = os colchetes "[]" é uma técnica que vai ser usado no back-end
