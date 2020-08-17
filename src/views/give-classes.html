@@ -17,13 +17,9 @@
       <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap"
             rel="stylesheet">
 
-      <!-- Para acessar um arquivo javaScript, abre uma tag <script> e coloca o seu caminho src="/scripts/addField.js" 
-            porém, se eu colocar o script no <head>, terei um erro, aonde o script não será lido, pois, ele vai ler primeiro 
-            o comando do script, para depois executar os comando em HTML, e para resolver o problema, basta colocar o 
-            defer, que faz com que execute tudo o que está no programa, para depois acessar o javaScript. Fazendo o carregamento 
-            do javaScript depois que fazer a rendarização da página. -->
+      <script src="/scripts/jquery.min.3.5.1.js"></script>
       <script src="/scripts/addField.js" defer></script>
-      <script src="/public/scripts/removeField.js" defer></script>
+      <script src="/scripts/removeField.js" defer></script>
 </head>
 
 <body id="page-give-classes">
@@ -43,14 +39,7 @@
 
                   </div>
             </header>
-            <!-- <fieldset> = para fazer um agrupamento de dados dentro do formulário, e toda <fieldset> precisa ter dentro uma <legend>
-      <legend> =  vai ser o nome do agrupamento de dados.
-      <input name="name" id="name" required> = required, esse campo é obrigatório, o formulário não vai para o local aonde queremos enviar ele, se este campo não estiver preenchido. 
-      <small> = é uma tag que quer dizer que tem um texto pequeno.buttons-container
-      type="url" = ele exige que coloque o hyperLink.
-      <textarea></textarea> = você consegue colocar multi linhas dentro dele, mas não pode dar quebra de linha, pois o curso fica desorientado.
 
-      -->
             <main>
                   <form action="/save-classes" id="create-class" method="POST">
                         <fieldset>
@@ -80,7 +69,7 @@
                                     <label for="subject">Matéria</label>
                                     <select name="subject" id="subject" required>
 
-                                          <!-- Estrutura de repetição Loop - roda quantas vezes for necessária e toda vez que entrar vai chamar um subject -->
+                                          <!-- Estrutura de repetição Loop -->
                                           {%for subject in subjects %}
                                           <option value="{{loop.index}}">
                                                 {{subject}}
@@ -98,16 +87,13 @@
                               </div>
                         </fieldset>
 
-                        <!-- id="schedule-items"; é um id que será utilizado no javaScript também. -->
+                        <!-- id="schedule-items" utilizado no javaScript -->
                         <fieldset id="schedule-items">
                               <legend>Horários disponíveis
                                     <button type="button" id="add-time">+ Novo Horário</button>
                                     <button type="button" id="rmv-time">Remover horário</button>
                               </legend>
-                              <!-- 
-  <select name="weekday[]" id="weekday"></select> = os colchetes "[]" é uma técnica que vai ser usado no back-end
-e que significa que pode vir com mais de um valor, e vai agrupar os valores com essa técnica.
- -->
+
                               <div class="schedule-item">
 
                                     <div class="select-block">
@@ -133,15 +119,10 @@ e que significa que pode vir com mais de um valor, e vai agrupar os valores com 
                                           <input type="time" name="time_to[]" required>
                                     </div>
                               </div>
-                              <!-- somente para verificação da formatação do .schedule-item para o javaScript,
-                                    foi copiado inteiro a -> <div class="schedule-item">
-                              Fim do teste e pode apagar! -->
+
                         </fieldset>
                   </form>
-                  <!-- Todo button que tem o tipo submit ele tem que estar dentro do formulário, mas se ele estiver fora do formulário,
-                  tem a opção de indicar o button para dentro do form, que é criando uma id em form (<form action="" id="create-class">),
-                  e colocar no button criado fora do form dessa maneira (<button type="submit" form="create-class">Salvar cadastro</button>),
-                  assim irá enviar o formulário! -->
+
                   <footer>
                         <p>
                               <img src="/images/icons/warning.svg" alt="Aviso importante">

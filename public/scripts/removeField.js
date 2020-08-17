@@ -1,24 +1,22 @@
 // Deletando adição de novo horário!
 $('#rmv-time').hide();
-$('#add-time').on("click", showRemoveField)
+$('#add-time').on("click", showRemoveButton)
 
-function showRemoveField() {
-    const removeFields = document.querySelectorAll('.schedule-item')
-
-    if (removeFields.length > 1) {
-        return $('#rmv-time').show()
-    } else {
-
-    }
+function showRemoveButton() {
+    return $('#rmv-time').show()
 }
 
-$('#rmv-time').on("click", hideRemoveField)
+$('#rmv-time').on("click", removeScheduleItem)
 
-function hideRemoveField() {
-    const hideButton = document.querySelectorAll('.schedule-item')
-    if (hideButton.length <= 1) {
-        return $('#rmv-time').remove()
-    } else {
+// Botão remover oculto se tiver somente um SCHEDULE-ITEM
+function removeScheduleItem() {
+    const { length: scheduleList } = document.querySelectorAll('.schedule-item')
 
+    if (scheduleList > 1) {
+        $('.schedule-item:last').remove()
+
+        if ((scheduleList - 1) == 1) {
+            return $('#rmv-time').hide()
+        }
     }
 }
