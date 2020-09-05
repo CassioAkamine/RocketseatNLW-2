@@ -1,6 +1,6 @@
 const Database = require('./database/db')
 
-// const {  } -> é a maneira de desistruturar, é retirar da sua varável com o seu respectivo nome; require('./utils/format') -> é daonde ele está retirando as informações
+// const {  } -> é a maneira de desestruturar, é retirar da sua variável com o seu respectivo nome; require('./utils/format') -> é da onde ele está retirando as informações
 const { subjects, weekdays, getSubject, convertHoursToMinutes } = require('./utils/format')
 
 function pageLanding(req, res) {
